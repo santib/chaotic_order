@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "chaotic_order/version"
+require_relative "chaotic_order/random"
 
 module ChaoticOrder
   class Error < StandardError; end
@@ -10,7 +11,7 @@ module ChaoticOrder
       ::ActiveRecord::Relation.prepend(
         Module.new do
           def exec_queries(*)
-            arel.order('RANDOM()') if order_values.blank?
+            arel.order(ChaoticOrder::Random.for(connection.adapter_name)) if order_values.blank?
             super
           end
         end
