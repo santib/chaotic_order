@@ -1,15 +1,15 @@
 # ChaoticOrder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/chaotic_order`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Chaotic Order is a simple gem to help you detect queries that are missing an order. Sometimes we don't add an order because we assume they are going to come back ordered by `id` or something else, but it is not guaranteed by the DBMS. By forcing a randomic order to unordered queries we can help you detect them more easily. This gem can also help detecting intermittent tests that otherwise are hard to replicate.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'chaotic_order'
+group :development, :test do
+  gem 'chaotic_order'
+end
 ```
 
 And then execute:
@@ -32,7 +32,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/chaotic_order. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/chaotic_order/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/santib/chaotic_order. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/santib/chaotic_order/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -40,4 +40,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the ChaoticOrder project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/chaotic_order/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ChaoticOrder project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/santib/chaotic_order/blob/master/CODE_OF_CONDUCT.md).

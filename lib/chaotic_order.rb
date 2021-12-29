@@ -4,5 +4,17 @@ require_relative "chaotic_order/version"
 
 module ChaoticOrder
   class Error < StandardError; end
-  # Your code goes here...
+
+  class Railtie < Rails::Railtie
+    config.to_prepare do
+      ::ActiveRecord::Relation.prepend(
+        Module.new do
+          def exec_queries(*)
+            arel.order('RANDOM()') if order_values.blank?
+            super
+          end
+        end
+      )
+    end
+  end
 end
