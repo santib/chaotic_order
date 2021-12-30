@@ -5,12 +5,31 @@ on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gemfile: [rails_5_2.gemfile, rails_6_0.gemfile, rails_6_1.gemfile, rails_7_0.gemfile, rails_main.gemfile]
+        ruby_version: [2.5, 2.6, 2.7, 3.0.3]
+        exclude:
+          - gemfile: rails_main.gemfile
+            ruby_version: 2.5
+          - gemfile: rails_main.gemfile
+            ruby_version: 2.6
+          - gemfile: rails_7_0.gemfile
+            ruby_version: 2.5
+          - gemfile: rails_7_0.gemfile
+            ruby_version: 2.6
+          - gemfile: rails_6_0.gemfile
+            ruby_version: 3.0
+          - gemfile: rails_5_2.gemfile
+            ruby_version: 3.0
+    env:
+      BUNDLE_GEMFILE: spec/gemfiles/${{ matrix.gemfile }}
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
+    - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.2
+        ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
     - name: Linters
       run: bundle exec rubocop
