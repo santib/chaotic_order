@@ -2,7 +2,7 @@
 
 require "rails"
 require_relative "chaotic_order/version"
-require_relative "chaotic_order/random"
+require_relative "chaotic_order/manager"
 
 module ChaoticOrder
   class Error < StandardError; end
@@ -12,7 +12,7 @@ module ChaoticOrder
       ::ActiveRecord::Relation.prepend(
         Module.new do
           def exec_queries(*)
-            arel.order(ChaoticOrder::Random.for(connection.adapter_name)) if order_values.blank?
+            ChaoticOrder::Manager.new(arel, connection.adapter_name).set_random_order
             super
           end
         end
