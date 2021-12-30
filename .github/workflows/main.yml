@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         gemfile: [rails_5_2.gemfile, rails_6_0.gemfile, rails_6_1.gemfile, rails_7_0.gemfile, rails_main.gemfile]
-        ruby_version: [2.5, 2.6, 2.7, 3.0]
+        ruby_version: [2.5, 2.6, 2.7, 3.0.3]
         exclude:
           - gemfile: rails_main.gemfile
             ruby_version: 2.5
@@ -31,8 +31,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
-    - name: Install dependencies
-      run: bundle install
     - name: Linters
       run: bundle exec rubocop
     - name: Tests
