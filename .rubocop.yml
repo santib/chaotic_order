@@ -1,5 +1,9 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
+
+Style/Documentation:
+  Exclude:
+    - lib/chaotic_order.rb
 
 Style/StringLiterals:
   Enabled: true

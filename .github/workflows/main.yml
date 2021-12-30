@@ -12,5 +12,7 @@ jobs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+    - name: Linters
+      run: bundle exec rubocop
+    - name: Tests
+      run: bundle exec rspec

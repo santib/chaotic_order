@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rails"
 require_relative "chaotic_order/version"
 require_relative "chaotic_order/random"
 
