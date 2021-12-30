@@ -26,7 +26,7 @@ module ChaoticOrder
     end
 
     def distinct_set?
-      arel.to_sql =~ /SELECT DISTINCT/i
+      arel.to_sql =~ /^SELECT DISTINCT/i
     end
 
     def random_for_adapter
