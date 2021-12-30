@@ -31,6 +31,8 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
+    - name: Install dependencies
+      run: bundle install
     - name: Linters
       run: bundle exec rubocop
     - name: Tests
