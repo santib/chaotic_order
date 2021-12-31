@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "chaotic_order"
   spec.version       = ChaoticOrder::VERSION
   spec.authors       = ["Santiago Bartesaghi", "Martin Jaime"]
-  spec.email         = ["santib@hey.com", "martin.jaime@rootstrap.com"]
+  spec.email         = ["santib@hey.com", "martinmoron7@gmail.com"]
 
   spec.summary       = "Add random order to queries that do not have a specific order"
   spec.homepage      = "https://github.com/santib/chaotic_order"
