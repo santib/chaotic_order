@@ -1,6 +1,10 @@
 # ChaoticOrder
 
-Chaotic Order is a simple gem to help you detect queries that are missing an order. Sometimes we don't add an order because we assume they are going to come back ordered by `id` or something else, but it is not guaranteed by the DBMS. By forcing a randomic order to unordered queries we can help you detect them more easily. This gem can also help detecting intermittent tests that otherwise are hard to replicate.
+Chaotic Order helps you detect queries that are missing an order.
+
+Sometimes we forget to add an order to our queries, or we don't add it because we assume that by default they will be returned ordered by `id`, but that is not guaranteed by the DBMS. By forcing a randomic order to the unordered queries, we can help you detect them more easily.
+
+This gem can be useful helping detect intermittent tests that otherwise are hard to replicate.
 
 ## Installation
 
@@ -12,6 +16,8 @@ group :development, :test do
 end
 ```
 
+Note that this gem is not recommended to be used in production.
+
 And then execute:
 
     $ bundle install
@@ -22,7 +28,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+By default the gem is turned off, and there are two ways to turn it on:
+1. By setting an environment variable `CHAOTIC_ORDER=true`
+1. By calling `ChaoticOrder::Config.enable!` in a initializer
+
+In either option, make sure that you are only enabling it in development and/or test environments, depending on your needs.
 
 ## Development
 
